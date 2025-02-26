@@ -19,14 +19,14 @@ class BlogScreen extends StatelessWidget {
             bottom: const TabBar(
               tabs: [
                 Tab(text: 'Posts'),
-                Tab(text: 'More'),
+                Tab(text: 'Settings'),
               ],
             ),
           ),
           body: const TabBarView(
             children: [
               PostListScreen(),
-              Center(child: Text('Additional content here.')),
+              Center(child: Text('Settings content here.')),
             ],
           ),
         ),

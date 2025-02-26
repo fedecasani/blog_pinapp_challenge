@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import '../models/post_model.dart';
+import '../screens/post_details_screen.dart';
 
 class PostCard extends StatelessWidget {
   final Post post;
@@ -10,6 +12,17 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final String imageUrl = 'https://picsum.photos/seed/${post.id}/300/200';
 
+    final List<String> postTypes = ['Community', 'Technology', 'Travel', 'Lifestyle', 'News'];
+    final List<Color> postColors = [
+      Colors.blue,
+      Colors.green,
+      Colors.orange,
+      Colors.purple,
+      Colors.red,
+    ];
+
+    final randomIndex = Random().nextInt(postTypes.length);
+
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       shape: RoundedRectangleBorder(
@@ -18,6 +31,23 @@ class PostCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+              decoration: BoxDecoration(
+                color: postColors[randomIndex],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                postTypes[randomIndex],
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -38,15 +68,23 @@ class PostCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: InkWell(
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Read more about: ${post.title}')),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PostDetailScreen(
+                            post: post,
+                            postType: postTypes[randomIndex],
+                            postColor: postColors[randomIndex],
+                            imageUrl: imageUrl,
+                          ),
+                        ),
                       );
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Read More ',
+                          'Read More',
                           style: TextStyle(color: Colors.blue[800]),
                         ),
                         Icon(
