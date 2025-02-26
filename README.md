@@ -27,12 +27,12 @@ Blog App is an example application developed in Flutter that allows users to vie
 ### Cloning the repository
 1. Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/fedecasani/blog_somnio_challenge.git
+   git clone https://github.com/fedecasani/blog_pinapp_challenge.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd blog_somnio_challenge
+   cd blog_pinapp_challenge
    ```
 
 3. Install the dependencies:

@@ -3,9 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../repositories/post_repository.dart';
 import '../blocs/post_bloc.dart';
 import 'post_list_screen.dart';
+import 'settings_screen.dart';
 
 class BlogScreen extends StatelessWidget {
-  const BlogScreen({super.key});
+  final bool isDarkMode;
+  final ValueChanged<bool> onToggleTheme;
+
+  const BlogScreen({super.key, required this.isDarkMode, required this.onToggleTheme});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class BlogScreen extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blue,
+            backgroundColor: isDarkMode ? Colors.blue : Colors.blue,
             title: const Text(
               'Blog',
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -23,11 +27,11 @@ class BlogScreen extends StatelessWidget {
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
               child: Container(
-                color: Colors.white,
+                color: isDarkMode ? Colors.grey[850] : Colors.white,
                 child: TabBar(
-                  indicatorColor: Colors.blue[800],
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: isDarkMode ? Colors.white : Colors.blue[800],
+                  labelColor: isDarkMode ? Colors.white : Colors.black,
+                  unselectedLabelColor: isDarkMode ? Colors.grey[500] : Colors.grey,
                   indicatorWeight: 3.0,
                   tabs: const [
                     Tab(text: 'Posts'),
@@ -37,10 +41,13 @@ class BlogScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              PostListScreen(),
-              Center(child: Text('Settings content here.')),
+              const PostListScreen(),
+              SettingsScreen(
+                isDarkMode: isDarkMode,
+                onToggleTheme: onToggleTheme,
+              ),
             ],
           ),
         ),
