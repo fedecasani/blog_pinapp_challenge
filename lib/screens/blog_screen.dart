@@ -15,12 +15,26 @@ class BlogScreen extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Blog'),
-            bottom: const TabBar(
-              tabs: [
-                Tab(text: 'Posts'),
-                Tab(text: 'Settings'),
-              ],
+            backgroundColor: Colors.blue,
+            title: const Text(
+              'Blog',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: Container(
+                color: Colors.white,
+                child: TabBar(
+                  indicatorColor: Colors.blue[800],
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.grey,
+                  indicatorWeight: 3.0,
+                  tabs: const [
+                    Tab(text: 'Posts'),
+                    Tab(text: 'Settings'),
+                  ],
+                ),
+              ),
             ),
           ),
           body: const TabBarView(
