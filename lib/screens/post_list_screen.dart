@@ -128,9 +128,13 @@ class _PostListScreenState extends State<PostListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
         onPressed: _showFilterMenu,
-        child: const Icon(Icons.filter_list,
-        color: Colors.white,
+        child: const Icon(
+          Icons.filter_list,
+          color: Colors.white,
         ),
       ),
     );
