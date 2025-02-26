@@ -12,7 +12,13 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final String imageUrl = 'https://picsum.photos/seed/${post.id}/300/200';
 
-    final List<String> postTypes = ['Community', 'Technology', 'Travel', 'Lifestyle', 'News'];
+    final List<String> postTypes = [
+      'Community',
+      'Technology',
+      'Travel',
+      'Lifestyle',
+      'News'
+    ];
     final List<Color> postColors = [
       Colors.blue,
       Colors.green,
@@ -55,7 +61,8 @@ class PostCard extends StatelessWidget {
               children: [
                 Text(
                   _capitalizeFirstLetter(post.title),
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(

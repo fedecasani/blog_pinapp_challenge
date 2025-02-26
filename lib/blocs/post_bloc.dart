@@ -10,7 +10,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     on<FetchPostsEvent>(_onFetchPosts);
   }
 
-  Future<void> _onFetchPosts(FetchPostsEvent event, Emitter<PostState> emit) async {
+  Future<void> _onFetchPosts(
+      FetchPostsEvent event, Emitter<PostState> emit) async {
     try {
       emit(PostLoading());
       final posts = await repository.fetchPosts(event.start, event.limit);

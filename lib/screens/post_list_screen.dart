@@ -25,9 +25,12 @@ class _PostListScreenState extends State<PostListScreen> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
       _start += _limit;
-      context.read<PostBloc>().add(FetchPostsEvent(start: _start, limit: _limit));
+      context
+          .read<PostBloc>()
+          .add(FetchPostsEvent(start: _start, limit: _limit));
     }
   }
 

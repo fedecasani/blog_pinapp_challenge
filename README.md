@@ -1,67 +1,68 @@
+
 # Blog App
 
-## Descripción
-Blog App es una aplicación de ejemplo desarrollada en Flutter que permite a los usuarios visualizar publicaciones de un blog, ver detalles de cada post, y navegar entre varias pantallas. La aplicación presenta una interfaz limpia y moderna, con soporte para temas claros y oscuros, y funcionalidades como búsqueda y filtrado de publicaciones.
+## Description
+Blog App is an example application developed in Flutter that allows users to view blog posts, see details of each post, and navigate between various screens. The application features a clean and modern interface with support for light and dark themes, as well as functionalities like search and filtering of posts.
 
-## Características
-- **Pantalla Principal**: Muestra una lista de publicaciones con una breve descripción.
-- **Pantalla de Detalles**: Al hacer clic en una publicación, se muestra más información sobre el post, incluyendo tipo, título, contenido, y una imagen.
-- **Interfaz Personalizable**: Soporta temas claros y oscuros.
-- **Filtrado**: Permite filtrar las publicaciones por tipo (p.ej. Tecnología, Noticias, etc.).
-- **Diseño Moderno**: El AppBar tiene un diseño atractivo con texto en negrita.
-- **Búsqueda**: Los usuarios pueden buscar publicaciones por palabras clave.
-- **Sistema de Paginación**: La carga de publicaciones se realiza de manera perezosa para mejorar el rendimiento.
+## Features
+- **Main Screen**: Displays a list of posts with a brief description.
+- **Details Screen**: When clicking on a post, more information about the post is displayed, including type, title, content, and an image.
+- **Customizable Interface**: Supports light and dark themes.
+- **Filtering**: Allows filtering posts by type (e.g., Technology, News, etc.).
+- **Modern Design**: The AppBar has an attractive design with bold text.
+- **Search**: Users can search posts by keywords.
+- **Pagination**: Post loading is done lazily to improve performance.
 
-## Tecnologías Utilizadas
-- **Flutter**: Framework principal para el desarrollo de la aplicación.
-- **Bloc Pattern**: Gestión del estado utilizando el patrón BLoC para mantener el código limpio y escalable.
-- **Dart**: Lenguaje de programación utilizado en la aplicación.
+## Technologies Used
+- **Flutter**: The main framework for developing the application.
+- **Bloc Pattern**: State management using the BLoC pattern to keep the code clean and scalable.
+- **Dart**: Programming language used in the application.
 
-## Instalación
+## Installation
 
-### Requisitos
+### Requirements
 - [Flutter SDK](https://flutter.dev/docs/get-started/install)
 - [Dart SDK](https://dart.dev/get-dart)
 
-### Clonación del repositorio
-1. Clona el repositorio en tu máquina local:
+### Cloning the repository
+1. Clone the repository to your local machine:
    ```bash
    git clone https://github.com/fedecasani/blog_somnio_challenge.git
    ```
 
-2. Navega al directorio del proyecto:
+2. Navigate to the project directory:
    ```bash
    cd blog_somnio_challenge
    ```
 
-3. Instala las dependencias:
+3. Install the dependencies:
    ```bash
    flutter pub get
    ```
 
-4. Ejecuta la aplicación:
+4. Run the application:
    ```bash
    flutter run
    ```
 
-## Uso
-Al iniciar la aplicación, verás la pantalla principal que contiene una lista de publicaciones. Al hacer clic en cualquier publicación, serás redirigido a una pantalla de detalles que muestra más información, incluyendo el tipo del post, el título, el cuerpo del contenido, y una imagen relacionada.
+## Usage
+Upon launching the application, you will see the main screen displaying a list of posts. By clicking on any post, you will be redirected to a details screen showing more information, including the post type, title, content body, and an image.
 
-La aplicación también incluye una barra de búsqueda y filtros para ayudarte a encontrar contenido relevante. Puedes alternar entre un tema claro y oscuro usando las configuraciones del sistema.
+The app also includes a search bar and filters to help you find relevant content. You can toggle between a light and dark theme using the system settings.
 
-## Contribuciones
-Si deseas contribuir al proyecto, puedes seguir estos pasos:
+## Contributions
+If you would like to contribute to the project, please follow these steps:
 
-1. Haz un fork del repositorio.
-2. Crea una rama (`git checkout -b mi-rama`).
-3. Realiza tus cambios y haz un commit (`git commit -am 'Añadir nueva funcionalidad'`).
-4. Haz push a tu rama (`git push origin mi-rama`).
-5. Crea un pull request para que tus cambios sean revisados.
+1. Fork the repository.
+2. Create a branch (`git checkout -b my-branch`).
+3. Make your changes and commit (`git commit -am 'Add new functionality'`).
+4. Push to your branch (`git push origin my-branch`).
+5. Create a pull request for your changes to be reviewed.
 
-## Licencia
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
 
-## Contacto
-- **Desarrollador**: Federico Casani
-- **Correo electrónico**: fedecasani@gmail.com
+## Contact
+- **Developer**: Federico Casani
+- **Email**: fedecasani@gmail.com
 - **GitHub**: [fedecasani](https://github.com/fedecasani)
