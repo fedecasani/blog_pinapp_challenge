@@ -18,50 +18,67 @@ class PostCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
-            ),
-            child: Image.network(
-              imageUrl,
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  post.title,
+                  _capitalizeFirstLetter(post.title),
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  post.body,
+                  _capitalizeFirstLetter(post.body),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
                 Align(
-                  alignment: Alignment.centerRight,
-                  child: ElevatedButton(
-                    onPressed: () {
+                  alignment: Alignment.centerLeft,
+                  child: InkWell(
+                    onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Read more about: ${post.title}')),
                       );
                     },
-                    child: const Text('Read More'),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Read More ',
+                          style: TextStyle(color: Colors.blue[800]),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_outlined,
+                          size: 16,
+                          color: Colors.blue[800],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
           ),
+          ClipRRect(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(16),
+            ),
+            child: Image.network(
+              imageUrl,
+              height: 175,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  String _capitalizeFirstLetter(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1);
   }
 }
