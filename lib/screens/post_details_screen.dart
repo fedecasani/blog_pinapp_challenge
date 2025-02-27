@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/post_model.dart';
 
-class PostDetailScreen extends StatelessWidget {
+class PostDetailScreen extends StatefulWidget {
   final Post post;
   final String postType;
   final Color postColor;
@@ -14,6 +15,37 @@ class PostDetailScreen extends StatelessWidget {
     required this.postColor,
     required this.imageUrl,
   });
+
+  @override
+  _PostDetailScreenState createState() => _PostDetailScreenState();
+}
+
+class _PostDetailScreenState extends State<PostDetailScreen> {
+  static const platform = MethodChannel('commentsChannel');
+  List<String> comments = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchComments();
+  }
+
+  Future<void> _fetchComments() async {
+    try {
+      final List<dynamic> result = await platform
+          .invokeMethod('getComments', {'postId': widget.post.id});
+      setState(() {
+        comments = result.cast<String>();
+        isLoading = false;
+      });
+    } on PlatformException catch (e) {
+      setState(() {
+        comments = ['Error al obtener comentarios: ${e.message}'];
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +67,11 @@ class PostDetailScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                 decoration: BoxDecoration(
-                  color: postColor,
+                  color: widget.postColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  postType,
+                  widget.postType,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -50,7 +82,7 @@ class PostDetailScreen extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
-                  imageUrl,
+                  widget.imageUrl,
                   height: 250,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -66,7 +98,7 @@ class PostDetailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                _capitalizeFirstLetter(post.title),
+                _capitalizeFirstLetter(widget.post.title),
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -74,9 +106,25 @@ class PostDetailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                _capitalizeFirstLetter(post.body),
+                _capitalizeFirstLetter(widget.post.body),
                 style: const TextStyle(fontSize: 16),
               ),
+              const SizedBox(height: 16),
+              const Text(
+                "Comentarios:",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Column(
+                      children: comments
+                          .map((comment) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4),
+                                child: Text("- $comment"),
+                              ))
+                          .toList(),
+                    ),
             ],
           ),
         ),
