@@ -112,13 +112,13 @@ class PostCard extends StatelessWidget {
             ),
             child: Image.network(
               imageUrl,
-              height: 250, // Height updated to 250
+              height: 250,
               width: double.infinity,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset(
                   'assets/images/default_image.png',
-                  height: 250, // Same height as the image network
+                  height: 250,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 );

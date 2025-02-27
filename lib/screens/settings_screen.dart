@@ -4,7 +4,8 @@ class SettingsScreen extends StatelessWidget {
   final bool isDarkMode;
   final ValueChanged<bool> onToggleTheme;
 
-  const SettingsScreen({super.key, required this.isDarkMode, required this.onToggleTheme});
+  const SettingsScreen(
+      {super.key, required this.isDarkMode, required this.onToggleTheme});
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,6 @@ class Comment {
     required this.body,
   });
 
-  // Factory constructor to create a Comment from a Map
   factory Comment.fromMap(Map<String, dynamic> map) {
     return Comment(
       name: map['name'] ?? 'Sin nombre',

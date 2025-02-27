@@ -18,6 +18,7 @@ class PostDetailScreen extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _PostDetailScreenState createState() => _PostDetailScreenState();
 }
 
@@ -162,7 +163,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
               return const Text("No hay comentarios.");
             }
             return SizedBox(
-              height: 250, // Altura del carrusel
+              height: 250,
               child: PageView.builder(
                 itemCount: comments.length,
                 itemBuilder: (context, index) {

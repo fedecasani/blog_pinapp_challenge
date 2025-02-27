@@ -18,16 +18,12 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     try {
       emit(PostLoading());
 
-      // Intentar obtener los posts desde el repositorio
       final posts = await repository.fetchPosts(event.start, event.limit);
 
-      // Almacenar los posts en caché
       await _cachePosts(posts);
 
-      // Emitir estado con los posts cargados
       emit(PostLoaded(posts));
     } catch (e) {
-      // Si falla la carga, intentar obtener los posts en caché
       final cachedPosts = await _getCachedPosts(event.start, event.limit);
       if (cachedPosts.isNotEmpty) {
         emit(PostLoaded(cachedPosts));
@@ -37,14 +33,12 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     }
   }
 
-  // Método para almacenar los posts en caché usando SharedPreferences
   Future<void> _cachePosts(List<Post> posts) async {
     final prefs = await SharedPreferences.getInstance();
     final postsJson = posts.map((post) => post.toJson()).toList();
     await prefs.setString('cached_posts', json.encode(postsJson));
   }
 
-  // Método para obtener los posts en caché desde SharedPreferences
   Future<List<Post>> _getCachedPosts(int start, int limit) async {
     final prefs = await SharedPreferences.getInstance();
     final cachedData = prefs.getString('cached_posts');

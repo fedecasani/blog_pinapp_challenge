@@ -9,7 +9,8 @@ class BlogScreen extends StatelessWidget {
   final bool isDarkMode;
   final ValueChanged<bool> onToggleTheme;
 
-  const BlogScreen({super.key, required this.isDarkMode, required this.onToggleTheme});
+  const BlogScreen(
+      {super.key, required this.isDarkMode, required this.onToggleTheme});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,8 @@ class BlogScreen extends StatelessWidget {
                 child: TabBar(
                   indicatorColor: isDarkMode ? Colors.white : Colors.blue[800],
                   labelColor: isDarkMode ? Colors.white : Colors.black,
-                  unselectedLabelColor: isDarkMode ? Colors.grey[500] : Colors.grey,
+                  unselectedLabelColor:
+                      isDarkMode ? Colors.grey[500] : Colors.grey,
                   indicatorWeight: 3.0,
                   tabs: const [
                     Tab(text: 'Posts'),
