@@ -4,19 +4,21 @@
 ## Description
 Blog App is an example application developed in Flutter that allows users to view blog posts, see details of each post, and navigate between various screens. The application features a clean and modern interface with support for light and dark themes, as well as functionalities like search and filtering of posts.
 
+The comments for each post are fetched using endpoints implemented in Swift.
+
 ## Features
 - **Main Screen**: Displays a list of posts with a brief description.
 - **Details Screen**: When clicking on a post, more information about the post is displayed, including type, title, content, and an image.
 - **Customizable Interface**: Supports light and dark themes.
 - **Filtering**: Allows filtering posts by type (e.g., Technology, News, etc.).
 - **Modern Design**: The AppBar has an attractive design with bold text.
-- **Search**: Users can search posts by keywords.
 - **Pagination**: Post loading is done lazily to improve performance.
 
 ## Technologies Used
 - **Flutter**: The main framework for developing the application.
 - **Bloc Pattern**: State management using the BLoC pattern to keep the code clean and scalable.
 - **Dart**: Programming language used in the application.
+- **Swift**: Used to implement endpoints for fetching comments.
 
 ## Installation
 
