@@ -1,7 +1,7 @@
 import Foundation
 
 class CommentService {
-    static func fetchComments(for postId: Int, completion: @escaping ([String]?, Error?) -> Void) {
+    static func fetchComments(for postId: Int, completion: @escaping ([[String: Any]]?, Error?) -> Void) {
         let urlString = "https://jsonplaceholder.typicode.com/comments?postId=\(postId)"
         guard let url = URL(string: urlString) else {
             completion(nil, NSError(domain: "InvalidURL", code: 400, userInfo: nil))
@@ -21,8 +21,7 @@ class CommentService {
 
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                    let comments = jsonArray.compactMap { $0["body"] as? String }
-                    completion(comments, nil)
+                    completion(jsonArray, nil)
                 } else {
                     completion(nil, NSError(domain: "InvalidJSON", code: 500, userInfo: nil))
                 }
